@@ -1,0 +1,16 @@
+{
+   "_id": "_design/tweets",
+   "views": {
+       "tweet_ids": {
+           "map": "function(doc) { emit(doc['tweet_id'], null); }"
+       },
+       "tweeters": {
+           "map": "function(doc) {\n  emit(doc['from_user'], 1);\n}",
+           "reduce": "function(k, v, rere) {\n  return sum(v);\n}"
+       },
+       "tweets": {
+           "map": "function(doc) {\n  emit(doc['from_user'], doc);\n}"
+       }
+   },
+   "language": "javascript"
+}

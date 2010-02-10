@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title Tweetmon
+    %style{:type => 'text/css'}
+      :sass
+        body
+          font-family: Neue Helvetica, Helvetica, Arial, sans-serif
+        .tweets
+          list-style-type: none
+          margin: 0
+          padding: 0
+          width: 66%
+          margin: 0 auto
+          li
+            margin: 0
+            margin-bottom: 10px
+            display: block
+            padding: 5px
+            background: #ccc
+
+
+  %body
+    %h1
+      %a(href='/') tweets about couchdb
+      by
+      &= params[:tweeter]
+    %ul.tweets
+      - @tweets['rows'].each do |tweet|
+        %li
+          &= tweet['value']['text']

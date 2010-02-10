@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    %title Tweetmon
+  %body
+    %h1 Tweets about couchdb
+    %ul
+      - @tweeters.each do |tweeter|
+        %li
+          %a{:href => tweeter["key"]} #{tweeter['key']}
+          (#{tweeter["value"]})
